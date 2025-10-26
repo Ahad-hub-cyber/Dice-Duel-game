@@ -1,0 +1,27 @@
+import random
+
+# Generate a random number between 1 and 6
+random_number = random.randint(1, 6)
+guesses_left = 2
+
+while guesses_left > 0:
+    print(f"YOU HAVE {guesses_left} GUESSES REMAINING")
+    try:
+        guess = int(input("Guess the number on the dice (1-6): "))
+    except ValueError:
+        print("Invalid input. Please enter a number between 1 and 6.")
+        continue
+
+    if guess < 1 or guess > 6:
+        print("Please enter a number between 1 and 6.")
+        continue
+
+    if guess == random_number:
+        print(" Congrats! You have won!!!")
+        break
+    else:
+        guesses_left -= 1
+        if guesses_left == 0:
+            print(f" YOU HAVE LOST THE GAME. The correct number was {random_number}.")
+        else:
+            print("WRONG, TRY AGAIN.")
